@@ -7,6 +7,31 @@ public class Main {
         Point point = new Point(4, 3);
         System.out.println("x: " + point.x + " y: " + point.y);
 
+        // Create an array of LibraryItem objects
+        LibraryItem[] items = new LibraryItem[3];
+        for (int i = 0; i < items.length; i++) {
+            items[i] = new LibraryItem();
+        }
+
+        // Check out some items
+        items[0].checkOut();
+        items[2].checkOut();
+
+        // Print the state of the items before returning
+        System.out.println("Before returning items:");
+        for (LibraryItem item : items) {
+            System.out.println(item);
+        }
+
+        // Call the returnAll method
+        returnAll(items);
+
+        // Print the state of the items after returning
+        System.out.println("\nAfter returning items:");
+        for (LibraryItem item : items) {
+            System.out.println(item);
+        }
+
         Point xTranslation = point.translateX(3); // should be (7, 3)
         Point yTranslation = point.translateY(-7); // should be (4, -4)
         Point xyTranslation = point.translateX(-4).translateY(-3); // should be (0, 0)
@@ -69,4 +94,12 @@ public class Main {
         }
         return str + arr[arr.length - 1] + "]";
     }
+
+        public static void returnAll(LibraryItem[] items) {
+            for (LibraryItem item : items) {
+                if (item.isCheckedOut()) {
+                    item.returnItem();
+                }
+            }
+        }
 }
