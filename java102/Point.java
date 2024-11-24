@@ -31,7 +31,7 @@ public class Point {
         if (points == null || points.length == 0) {
             throw new IllegalArgumentException("The points array cannot be null or empty.");
         }
-        
+
         int sumX = 0;
         int sumY = 0;
 
@@ -44,5 +44,16 @@ public class Point {
         int centerY = sumY / points.length;
 
         return new Point(centerX, centerY);
+    }
+
+    // Practice: Angle
+    public double angle() {
+        double angleInRadians = Math.atan2(y, x);
+        double angleInDegrees = Math.toDegrees(angleInRadians);
+
+        if (angleInDegrees < 0) {
+            angleInDegrees += 360;
+        }
+        return angleInDegrees;
     }
 }
