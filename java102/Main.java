@@ -47,7 +47,7 @@ public class Main {
 
         ArrayList<Boolean> conditions = new ArrayList<>();
         conditions.add(true);
-        conditions.add(arr.get(0) == "Hello");
+        conditions.add("Hello".equals(arr.get(0)));
         conditions.add(conditions.get(0) || conditions.get(1));
 
         ArrayList<Integer> intArr = new ArrayList<>();
@@ -57,7 +57,8 @@ public class Main {
         System.out.println(intArr.size());
         System.out.println(intArr.get(32));
 
-        
+        Grid<Integer> grid = new Grid<>(5, 0);
+        grid.set(2, 2, 4);
+        System.out.println(grid);
     }
 }
-    
