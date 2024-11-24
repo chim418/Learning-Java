@@ -5,17 +5,25 @@ package java102;
 public class Grid<T> {
 	private final ArrayList<ArrayList<T>> grid;
 	public final int sideLength;
+	private static int maxSideLength = 0;
 
 	public Grid(int sideLength, T defaultVal) {
 		this.sideLength = sideLength;
-		this.grid = new ArrayList<ArrayList<T>>(sideLength);
+		this.grid = new ArrayList<>(sideLength);
 		for (int i = 0; i < sideLength; i++) {
 			grid.add(new ArrayList<>(sideLength));
 			for (int j = 0; j < sideLength; j++) {
 				grid.get(i).add(defaultVal);
 			}
 		}
+		if (sideLength > maxSideLength) {
+            maxSideLength = sideLength;
 	}
+}
+
+public static int maxSideLength() {
+	return maxSideLength;
+}
 
 	public T get(int row, int col) {
 		return grid.get(row).get(col);
@@ -36,4 +44,16 @@ public class Grid<T> {
 		}
 		return str;
 	}
+
+	// Practice: Diagonal
+	public ArrayList<T> diagonal() {
+		ArrayList<T> diagonalElements = new ArrayList<>();
+	
+		for (int i = 0; i < sideLength; i++) {
+			diagonalElements.add(grid.get(i).get(i));
+		}
+	
+		return diagonalElements;
+	}
+	
 }
