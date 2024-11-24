@@ -3,6 +3,16 @@ package java102;
 import java.util.ArrayList;
 
 public class Main {
+
+    public static ArrayList<LibraryItem> availableItems(LibraryItem[] items) {
+        ArrayList<LibraryItem> available = new ArrayList<>();
+        for (LibraryItem item : items) {
+            if (!item.isCheckedOut()) {
+                available.add(item);
+            }
+        }
+        return available;
+    }
     public static void main(String[] args) {
         Point point = new Point(4, 3);
         System.out.println("x: " + point.x + " y: " + point.y);
@@ -32,6 +42,18 @@ public class Main {
             System.out.println(item);
         }
 
+        items[1].checkOut();
+        items[3].checkOut();
+
+        // Get the available items
+        ArrayList<LibraryItem> available = availableItems(items);
+
+        // Print the available items
+        System.out.println("Available items:");
+        for (LibraryItem item : available) {
+            System.out.println(item);
+        }
+        
         Point xTranslation = point.translateX(3); // should be (7, 3)
         Point yTranslation = point.translateY(-7); // should be (4, -4)
         Point xyTranslation = point.translateX(-4).translateY(-3); // should be (0, 0)
