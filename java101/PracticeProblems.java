@@ -36,12 +36,10 @@ public class PracticeProblems {
 
     // Problem #4
     public static int fib(int n){
-        if (n == 0){ // VSCode suggests replacing chain of ifs with switch.
-            return 0; 
-        } else if (n == 1){
-            return 1;
-        } else {
-            return fib(n-1) + fib(n-2);
-        }
+        return switch (n) {
+            case 0 -> 0;
+            case 1 -> 1;
+            default -> fib(n-1) + fib(n-2);
+        }; // VSCode suggests replacing chain of ifs with switch.
     }
 }
